@@ -14,6 +14,16 @@ tester.describe("token2patternlab", test => {
         cb();
     });
 
+    // Paragraphs
+    test.it("should support descriptions", function(cb) {
+        test.expect(token2patternlab({
+            description: [
+                "This is a description"
+            ]
+        })).toBe("\nThis is a description\n");
+        cb();
+    });
+
     // Custom converters
     test.it("should support custom types", function(cb) {
         token2patternlab.converters.sayHello = function(input, token2patternlab) {
