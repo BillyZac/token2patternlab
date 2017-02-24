@@ -1,14 +1,14 @@
-const json2md = require("../lib");
+const token2patternlab = require("../lib");
 
-console.log(json2md([
-  { p: "This is a paragraph" }
+console.log(token2patternlab([
+  { name: "Button"
+  , description: "This is a description" }
   , { "code": {
-        language: "js"
+        language: ""
       , content: [
-          "function sum (a, b) {"
-        , "   return a + b;"
-        , "}"
-        , "sum(1, 2);"
+          "<Button"
+        , "onClick=handler"
+        , "\>"
         ]
       }
     }
