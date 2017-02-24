@@ -1,12 +1,12 @@
 // Dependencies
-var json2md = require("../lib"),
+var token2patternlab = require("../lib"),
     tester = require("tester");
 
-tester.describe("json2md", test => {
+tester.describe("token2patternlab", test => {
 
     // Paragraphs
     test.it("should support paragraphs", function(cb) {
-        test.expect(json2md({
+        test.expect(token2patternlab({
             p: [
                 "Two", "Paragraphs"
             ]
@@ -16,10 +16,10 @@ tester.describe("json2md", test => {
 
     // Custom converters
     test.it("should support custom types", function(cb) {
-        json2md.converters.sayHello = function(input, json2md) {
+        token2patternlab.converters.sayHello = function(input, token2patternlab) {
             return "Hello " + input + "!";
         };
-        test.expect(json2md({
+        test.expect(token2patternlab({
             sayHello: "World"
         })).toBe("Hello World!")
         cb();
@@ -27,7 +27,7 @@ tester.describe("json2md", test => {
 
     // Code samples
     test.it("should support code samples", function(cb) {
-        test.expect(json2md({
+        test.expect(token2patternlab({
             code: {
                 language: "js",
                 content: [
@@ -37,5 +37,11 @@ tester.describe("json2md", test => {
         })).toBe("```js\nfunction sum (a, b) {\n   return a + b;\n}\nsum(1, 2);\n```");
         cb();
     });
+
+    test.it("should create a component title", function(cb) {
+      test.expect(token2patternlab({
+        name: "button"
+      })).toBe("---\ntitle: Button\n---\n")
+    })
 
 });
