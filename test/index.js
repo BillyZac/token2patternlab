@@ -25,4 +25,17 @@ tester.describe("json2md", test => {
         cb();
     });
 
+    // Code samples
+    test.it("should support code samples", function(cb) {
+        test.expect(json2md({
+            code: {
+                language: "js",
+                content: [
+                    "function sum (a, b) {", "   return a + b;", "}", "sum(1, 2);"
+                ]
+            }
+        })).toBe("```js\nfunction sum (a, b) {\n   return a + b;\n}\nsum(1, 2);\n```");
+        cb();
+    });
+
 });
