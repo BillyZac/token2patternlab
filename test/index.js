@@ -38,10 +38,11 @@ tester.describe("token2patternlab", test => {
         cb();
     });
 
+    // Component titles
     test.it("should create a component title", function(cb) {
       test.expect(token2patternlab({
-        name: "button"
-      })).toBe("---\ntitle: Button\n---\n")
-    })
+        name: "Button"
+      })).toBe("---\ntitle: Button\n---\n");
+    });
 
 });
